@@ -33,6 +33,7 @@
 
 //#define LANGUAGE_MODULE_NAME         // Enable to display "Module Generic" (ie Spanish), Disable to display "Generic Module" (ie English)
 
+#define LANGUAGE_LCID 1031
 // HTML (ISO 639-1) Language Code
 #define D_HTML_LANGUAGE "de"
 
@@ -75,6 +76,7 @@
 #define D_DARKLIGHT "dunkel"
 #define D_DEBUG "debug"
 #define D_DISABLED "deaktiviert"
+#define D_DISTANCE "Abstand"
 #define D_DNS_SERVER "DNS-Server"
 #define D_DONE "erledigt"
 #define D_DST_TIME "DST"
@@ -90,6 +92,7 @@
 #define D_FALSE "falsch"
 #define D_FILE "Datei"
 #define D_FREE_MEMORY "Freier Arbeitsspeicher"
+#define D_FREQUENCY "Frequency"
 #define D_GAS "Gas"
 #define D_GATEWAY "Gateway"
 #define D_GROUP "Gruppe"
@@ -100,6 +103,7 @@
 #define D_IMMEDIATE "direkt"      // Button immediate
 #define D_INDEX "Index"
 #define D_INFO "Info"
+#define D_INFRARED "Infrarot"
 #define D_INITIALIZED "initialisiert"
 #define D_IP_ADDRESS "IP-Adresse"
 #define D_LIGHT "Licht"
@@ -118,6 +122,9 @@
 #define D_PORT "Port"
 #define D_POWER_FACTOR "Leistungsfaktor"
 #define D_POWERUSAGE "Leistung"
+#define D_POWERUSAGE_ACTIVE "Active Power"
+#define D_POWERUSAGE_APPARENT "Apparent Power"
+#define D_POWERUSAGE_REACTIVE "Reactive Power"
 #define D_PRESSURE "Luftdruck"
 #define D_PRESSUREATSEALEVEL "Luftdruck auf Meereshöhe"
 #define D_PROGRAM_FLASH_SIZE "Ges. Flash Speicher"
@@ -153,6 +160,7 @@
 #define D_UPTIME "Laufzeit"
 #define D_USER "Benutzer"
 #define D_UTC_TIME "UTC"
+#define D_UV_INDEX "UV-Index"
 #define D_UV_LEVEL "UV-Level"
 #define D_VERSION "Version"
 #define D_VOLTAGE "Spannung"
@@ -197,7 +205,7 @@
 #define D_USE_DEFAULTS "Standard verwenden"
 #define D_ERASED_SECTOR "gelöschter Sektor"
 
-// webserver.ino
+// xdrv_02_webserver.ino
 #define D_MINIMAL_FIRMWARE_PLEASE_UPGRADE "MINIMUM-Firmware - bitte upgraden"
 #define D_WEBSERVER_ACTIVE_ON "Web-Server aktiv bei"
 #define D_WITH_IP_ADDRESS "mit IP-Adresse"
@@ -313,13 +321,17 @@
 #define D_UPLOAD_ERR_7 "Upload abgebrochen"
 #define D_UPLOAD_ERR_8 "Datei ungültig"
 #define D_UPLOAD_ERR_9 "Datei zu groß"
+#define D_UPLOAD_ERR_10 "RF Chip init fehlgeschlagen"
+#define D_UPLOAD_ERR_11 "RF Chip löschen fehlgeschlagen"
+#define D_UPLOAD_ERR_12 "RF Chip beschreiben fehlgeschlagen"
+#define D_UPLOAD_ERR_13 "RF Firmware ungültig"
 #define D_UPLOAD_ERROR_CODE "Upload Fehler Nummer"
 
 #define D_ENTER_COMMAND "Befehl eingeben"
 #define D_ENABLE_WEBLOG_FOR_RESPONSE "Aktivere Web Log Level 2 falls Reaktion erwartet"
 #define D_NEED_USER_AND_PASSWORD "Benötige user=<Benutzername>&password=<Passwort>"
 
-// xdrv_00_mqtt.ino
+// xdrv_01_mqtt.ino
 #define D_FINGERPRINT "TLS-Fingerabdruck wird verifiziert..."
 #define D_TLS_CONNECT_FAILED_TO "TLS-Verbindung fehlgeschlagen an"
 #define D_RETRY_IN "Wiederversuch in"
@@ -327,7 +339,7 @@
 #define D_INSECURE "unsichere Verbindung aufgrund ungültigen Fingerabdrucks"
 #define D_CONNECT_FAILED_TO "Verbindung fehlgeschlagen aufgrund von"
 
-// xdrv_wemohue.ino
+// xplg_wemohue.ino
 #define D_MULTICAST_DISABLED "Multicast deaktiviert"
 #define D_MULTICAST_REJOINED "Multicast (wieder-)verbunden"
 #define D_MULTICAST_JOIN_FAILED "Multicast Verbindung fehlgeschlagen"
@@ -347,7 +359,7 @@
 #define D_HUE_POST_ARGS "Hue POST-Argumente"
 #define D_3_RESPONSE_PACKETS_SENT "3 Antwortpakete gesendet"
 
-// xdrv_05_domoticz.ino
+// xdrv_07_domoticz.ino
 #define D_DOMOTICZ_PARAMETERS "Domoticz-Parameter"
 #define D_DOMOTICZ_IDX "Idx"
 #define D_DOMOTICZ_KEY_IDX "Key idx"
@@ -375,24 +387,27 @@
 #define D_TIMER_ACTION "Aktion"
 
 // xdrv_10_knx.ino
-#define D_CONFIGURE_KNX "Configure KNX"
-#define D_KNX_PARAMETERS "KNX Parameters"
-#define D_KNX_GENERAL_CONFIG "General"
-#define D_KNX_PHYSICAL_ADDRESS "Physical Address"
-#define D_KNX_PHYSICAL_ADDRESS_NOTE "( Must be unique on the KNX network )"
-#define D_KNX_ENABLE "Enable KNX"
-#define D_KNX_GROUP_ADDRESS_TO_WRITE "Data to Send to Group Addresses"
-#define D_ADD "Add"
-#define D_DELETE "Delete"
-#define D_REPLY "Reply"
-#define D_KNX_GROUP_ADDRESS_TO_READ "Group Addresses to Receive Data from"
+#define D_CONFIGURE_KNX "KNX konfigurieren"
+#define D_KNX_PARAMETERS "KNX-Parameter"
+#define D_KNX_GENERAL_CONFIG "Allgemein"
+#define D_KNX_PHYSICAL_ADDRESS "Physikalische Adresse"
+#define D_KNX_PHYSICAL_ADDRESS_NOTE "( Muss einmalig im KNX-Netzwerk sein )"
+#define D_KNX_ENABLE "KNX aktivieren"
+#define D_KNX_GROUP_ADDRESS_TO_WRITE "Daten zum Senden an Gruppenadresse"
+#define D_ADD "Hinzufügen"
+#define D_DELETE "Löschen"
+#define D_REPLY "Antworten"
+#define D_KNX_GROUP_ADDRESS_TO_READ "Gruppenadresse zum Emfang von Daten"
 #define D_LOG_KNX "KNX: "
-#define D_RECEIVED_FROM "Received from"
-#define D_KNX_COMMAND_WRITE "Write"
-#define D_KNX_COMMAND_READ "Read"
-#define D_KNX_COMMAND_OTHER "Other"
-#define D_SENT_TO "sent to"
-#define D_KNX_WARNING "The group address ( 0 / 0 / 0 ) is reserved and can not be used."
+#define D_RECEIVED_FROM "Empfangen von"
+#define D_KNX_COMMAND_WRITE "Schreiben"
+#define D_KNX_COMMAND_READ "Lesen"
+#define D_KNX_COMMAND_OTHER "Andere"
+#define D_SENT_TO "gesendet an"
+#define D_KNX_WARNING "Die Gruppenadresse ( 0 / 0 / 0 ) ist reserviert und kann nicht verwendet werden."
+#define D_KNX_ENHANCEMENT "Erweiterte Kommunikation"
+#define D_KNX_TX_SLOT "KNX TX"
+#define D_KNX_RX_SLOT "KNX RX"
 
 // xdrv_03_energy.ino
 #define D_ENERGY_TODAY "Energie heute"
@@ -450,9 +465,20 @@
 #define D_SENSOR_SDS0X1   "SDS0X1"
 #define D_SENSOR_SBR_RX   "SerBr Rx"
 #define D_SENSOR_SBR_TX   "SerBr Tx"
+#define D_SENSOR_SR04_TRIG "SR04 Tri"
+#define D_SENSOR_SR04_ECHO "SR04 Ech"
+#define D_SENSOR_SDM120_TX "SDM120 Tx"
+#define D_SENSOR_SDM120_RX "SDM120 Rx"
+#define D_SENSOR_SDM630_TX "SDM630 Tx"
+#define D_SENSOR_SDM630_RX "SDM630 Rx"
+#define D_SENSOR_TM1638_CLK "TM16 CLK"
+#define D_SENSOR_TM1638_DIO "TM16 DIO"
+#define D_SENSOR_TM1638_STB "TM16 STB"
 
 // Units
 #define D_UNIT_AMPERE "A"
+#define D_UNIT_CENTIMETER "cm"
+#define D_UNIT_HERTZ "Hz"
 #define D_UNIT_HOUR "h"
 #define D_UNIT_KILOOHM "kOhm"
 #define D_UNIT_KILOWATTHOUR "kWh"
@@ -469,6 +495,8 @@
 #define D_UNIT_PRESSURE "hPa"
 #define D_UNIT_SECOND "sek"
 #define D_UNIT_SECTORS "Sektoren"
+#define D_UNIT_VA "VA"
+#define D_UNIT_VAR "VAr"
 #define D_UNIT_VOLT "V"
 #define D_UNIT_WATT "W"
 #define D_UNIT_WATTHOUR "Wh"

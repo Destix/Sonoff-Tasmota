@@ -28,11 +28,12 @@
  * Use online command StateText to translate ON, OFF, HOLD and TOGGLE.
  * Use online command Prefix to translate cmnd, stat and tele.
  *
- * Updated until v5.12.0m
+ * Updated until v5.14.0a
 \*********************************************************************/
 
 #define LANGUAGE_MODULE_NAME         // Enable to display "Module Generic" (ie Spanish), Disable to display "Generic Module" (ie English)
 
+#define LANGUAGE_LCID 1036
 // HTML (ISO 639-1) Language Code
 #define D_HTML_LANGUAGE "fr"
 
@@ -75,6 +76,7 @@
 #define D_DARKLIGHT "Sombre"
 #define D_DEBUG "Debug"
 #define D_DISABLED "Désactivé"
+#define D_DISTANCE "Distance"
 #define D_DNS_SERVER "Serveur DNS"
 #define D_DONE "Fait"
 #define D_DST_TIME "DST"
@@ -90,6 +92,7 @@
 #define D_FALSE "Faux"
 #define D_FILE "Fichier"
 #define D_FREE_MEMORY "Mémoire libre"
+#define D_FREQUENCY "Fréquence"
 #define D_GAS "Gaz"
 #define D_GATEWAY "Passerelle"
 #define D_GROUP "Groupe"
@@ -100,6 +103,7 @@
 #define D_IMMEDIATE "immédiat"      // Button immediate
 #define D_INDEX "Index"
 #define D_INFO "Info"
+#define D_INFRARED "Infra-rouge"
 #define D_INITIALIZED "Initialisé"
 #define D_IP_ADDRESS "Adresse IP"
 #define D_LIGHT "Lumière"
@@ -118,6 +122,9 @@
 #define D_PORT "Port"
 #define D_POWER_FACTOR "Facteur de puissance"
 #define D_POWERUSAGE "Puissance"
+#define D_POWERUSAGE_ACTIVE "Puissance Active"
+#define D_POWERUSAGE_APPARENT "Puissance Apparente"
+#define D_POWERUSAGE_REACTIVE "Puissance Réactive"
 #define D_PRESSURE "Pression"
 #define D_PRESSUREATSEALEVEL "PressionMer"
 #define D_PROGRAM_FLASH_SIZE "Taille Flash Programme"
@@ -149,10 +156,11 @@
 #define D_TRUE "Vrai"
 #define D_TVOC "TVOC"
 #define D_UPGRADE "la mise à jour" 	 // "Lancer la mise à jour"
-#define D_UPLOAD "Upload"    // Not better in french 
+#define D_UPLOAD "Upload"    // Not better in french
 #define D_UPTIME "Durée d'activité"
 #define D_USER "Utilisateur"
 #define D_UTC_TIME "UTC"
+#define D_UV_INDEX "Indice UV"
 #define D_UV_LEVEL "Niveau UV"
 #define D_VERSION "Version"
 #define D_VOLTAGE "Tension"
@@ -197,7 +205,7 @@
 #define D_USE_DEFAULTS "Utiliser par défaut"
 #define D_ERASED_SECTOR "Secteur effacé"
 
-// webserver.ino
+// xdrv_02_webserver.ino
 #define D_MINIMAL_FIRMWARE_PLEASE_UPGRADE "Firmware MINIMAL - merci de mettre à jour"
 #define D_WEBSERVER_ACTIVE_ON "Serveur web actif sur"
 #define D_WITH_IP_ADDRESS "avec l'adresse IP"
@@ -213,7 +221,7 @@
 #define D_DEVICE_WILL_RESTART "Le module va redémarrer dans quelques secondes"
 #define D_BUTTON_TOGGLE "on/off"
 #define D_CONFIGURATION "Configuration"
-#define D_INFORMATION "Information"
+#define D_INFORMATION "Informations"
 #define D_FIRMWARE_UPGRADE "Mise à jour du Firmware"
 #define D_CONSOLE "Console"
 #define D_CONFIRM_RESTART "Confirmer redémarrage"
@@ -309,17 +317,21 @@
 #define D_UPLOAD_ERR_3 "L'octet magique n'est pas 0xE9"
 #define D_UPLOAD_ERR_4 "La taille du programme à flasher est plus grande que la taille réelle de la mémoire flash"
 #define D_UPLOAD_ERR_5 "Erreur de comparaison du buffer de téléchargement"
-#define D_UPLOAD_ERR_6 "Téléchargement échoué. Activation logging 3"
+#define D_UPLOAD_ERR_6 "Téléchargement échoué. Activer Weblog 3"
 #define D_UPLOAD_ERR_7 "Téléchargement annulé"
 #define D_UPLOAD_ERR_8 "Fichier invalide"
 #define D_UPLOAD_ERR_9 "Fichier trop grand"
+#define D_UPLOAD_ERR_10 "Failed to init RF chip"
+#define D_UPLOAD_ERR_11 "Failed to erase RF chip"
+#define D_UPLOAD_ERR_12 "Failed to write to RF chip"
+#define D_UPLOAD_ERR_13 "Failed to decode RF firmware"
 #define D_UPLOAD_ERROR_CODE "Code d'erreur téléchargement"
 
 #define D_ENTER_COMMAND "Saisir une commande"
-#define D_ENABLE_WEBLOG_FOR_RESPONSE "Activer weblog 2 si response attendue"
+#define D_ENABLE_WEBLOG_FOR_RESPONSE "Activer Weblog 2 si une réponse est attendue"
 #define D_NEED_USER_AND_PASSWORD "Nécessite utilisateur=<username>&password=<password>"
 
-// xdrv_00_mqtt.ino
+// xdrv_01_mqtt.ino
 #define D_FINGERPRINT "Vérification d'empreinte TLS ..."
 #define D_TLS_CONNECT_FAILED_TO "Échec de connexion TLS à"
 #define D_RETRY_IN "Nouvelle tentative dans"
@@ -327,7 +339,7 @@
 #define D_INSECURE "Connexion non sécurisée car empreinte non vérifiée"
 #define D_CONNECT_FAILED_TO "Échec de connexion à"
 
-// xdrv_wemohue.ino
+// xplg_wemohue.ino
 #define D_MULTICAST_DISABLED "Multicast désactivé"
 #define D_MULTICAST_REJOINED "Multicast (re)joint"
 #define D_MULTICAST_JOIN_FAILED "Multicast échec abonnement"
@@ -345,9 +357,9 @@
 #define D_HUE_API_NOT_IMPLEMENTED "API Hue non implémentée"
 #define D_HUE_API "Hue API"
 #define D_HUE_POST_ARGS "Hue POST args"
-#define D_3_RESPONSE_PACKETS_SENT "3 paquets Response envoyés"
+#define D_3_RESPONSE_PACKETS_SENT "3 paquets de réponse envoyés"
 
-// xdrv_05_domoticz.ino
+// xdrv_07_domoticz.ino
 #define D_DOMOTICZ_PARAMETERS "Paramètres Domoticz"
 #define D_DOMOTICZ_IDX "Idx"
 #define D_DOMOTICZ_KEY_IDX "Key idx"
@@ -381,7 +393,7 @@
 #define D_KNX_PHYSICAL_ADDRESS "Adresse individuelle"				// Backbone/Line/Device -> Zone/Ligne/Participant
 #define D_KNX_PHYSICAL_ADDRESS_NOTE "(Doit être unique sur le réseau KNX)"
 #define D_KNX_ENABLE "Activer KNX"
-#define D_KNX_GROUP_ADDRESS_TO_WRITE "Données à envoyer à  les Adresses de Groupe"
+#define D_KNX_GROUP_ADDRESS_TO_WRITE "Données à envoyer aux Adresses de Groupe"
 #define D_ADD "Ajoûter"
 #define D_DELETE "Supprimer"
 #define D_REPLY "Répondre"
@@ -393,6 +405,9 @@
 #define D_KNX_COMMAND_OTHER "Autre"
 #define D_SENT_TO "envoyé à"
 #define D_KNX_WARNING "L'Adresse de Groupe ( 0 / 0 / 0 ) est réservée et ne peut être utilisée."
+#define D_KNX_ENHANCEMENT "Communication Enhancement"
+#define D_KNX_TX_SLOT "KNX TX"
+#define D_KNX_RX_SLOT "KNX RX"
 
 // xsns_03_energy.ino
 #define D_ENERGY_TODAY "Énergie aujourd'hui"
@@ -450,9 +465,20 @@
 #define D_SENSOR_SDS0X1   "SDS0X1"
 #define D_SENSOR_SBR_RX   "SerBr Rx"
 #define D_SENSOR_SBR_TX   "SerBr Tx"
+#define D_SENSOR_SR04_TRIG "SR04 Tri"
+#define D_SENSOR_SR04_ECHO "SR04 Ech"
+#define D_SENSOR_SDM120_TX "SDM120 Tx"
+#define D_SENSOR_SDM120_RX "SDM120 Rx"
+#define D_SENSOR_SDM630_TX "SDM630 Tx"
+#define D_SENSOR_SDM630_RX "SDM630 Rx"
+#define D_SENSOR_TM1638_CLK "TM16 CLK"
+#define D_SENSOR_TM1638_DIO "TM16 DIO"
+#define D_SENSOR_TM1638_STB "TM16 STB"
 
 // Units
 #define D_UNIT_AMPERE "A"
+#define D_UNIT_CENTIMETER "cm"
+#define D_UNIT_HERTZ "Hz"
 #define D_UNIT_HOUR "h"
 #define D_UNIT_KILOOHM "kΩ"
 #define D_UNIT_KILOWATTHOUR "kWh"
@@ -469,6 +495,8 @@
 #define D_UNIT_PRESSURE "hPa"
 #define D_UNIT_SECOND "sec"
 #define D_UNIT_SECTORS "secteurs"
+#define D_UNIT_VA "VA"
+#define D_UNIT_VAR "VAr"
 #define D_UNIT_VOLT "V"
 #define D_UNIT_WATT "W"
 #define D_UNIT_WATTHOUR "Wh"

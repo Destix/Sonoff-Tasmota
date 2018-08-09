@@ -92,7 +92,9 @@ void MqttSubscribeLib(char *topic)
 
 bool MqttPublishLib(const char* topic, boolean retained)
 {
-  return MqttClient.publish(topic, mqtt_data, retained);
+  bool result = MqttClient.publish(topic, mqtt_data, retained);
+  yield();  // #3313
+  return result;
 }
 
 void MqttLoop()
@@ -383,6 +385,7 @@ void MqttConnected()
   }
   mqtt_initial_connection_state = 0;
   rules_flag.mqtt_connected = 1;
+  global_state.mqtt_down = 0;
 }
 
 #ifdef USE_MQTT_TLS
@@ -443,6 +446,7 @@ void MqttReconnect()
 
   mqtt_connected = false;
   mqtt_retry_counter = Settings.mqtt_retry;
+  global_state.mqtt_down = 1;
 
 #ifndef USE_MQTT_TLS
 #ifdef USE_DISCOVERY
@@ -512,13 +516,17 @@ void MqttCheck()
 {
   if (Settings.flag.mqtt_enabled) {
     if (!MqttIsConnected()) {
+      global_state.mqtt_down = 1;
       if (!mqtt_retry_counter) {
         MqttReconnect();
       } else {
         mqtt_retry_counter--;
       }
+    } else {
+      global_state.mqtt_down = 0;
     }
   } else {
+    global_state.mqtt_down = 0;
     if (mqtt_initial_connection_state) MqttReconnect();
   }
 }
